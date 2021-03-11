@@ -1,6 +1,4 @@
 //https://www.hackerrank.com/challenges/staircase/problem
-
-
 #include <assert.h>
 #include <limits.h>
 #include <math.h>
