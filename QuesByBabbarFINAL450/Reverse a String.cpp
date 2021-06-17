@@ -3,7 +3,7 @@
 class Solution {
 public:
     void reverseString(vector<char>& s) {
-        int temp;
+        char temp;
         for(int i=0;i<s.size()/2;i++)
         {
             temp=s[i];
