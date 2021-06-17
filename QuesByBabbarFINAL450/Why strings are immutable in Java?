@@ -1,0 +1,25 @@
+Why strings are immutable in Java?
+
+Because java uses the concept of string literal.
+Suppose there are 5 reference variables,all referes to one object "sachin".
+If one reference variable changes the value of the object, it will be affected to all the reference variables.
+That is why string objects are immutable in java.
+
+Eg.
+
+class Testimmutablestring{  
+ public static void main(String args[]){  
+   String s="Sachin";  
+   s.concat(" Tendulkar");//concat() method appends the string at the end  
+   System.out.println(s);//will print Sachin because strings are immutable objects  
+ }  
+}  
+
+
+class Testimmutablestring1{  
+ public static void main(String args[]){  
+   String s="Sachin";  
+   s=s.concat(" Tendulkar");  //But if we explicitely assign it to the reference variable, it will refer to "Sachin Tendulkar" object.
+   System.out.println(s);  //Please notice that still sachin object is not modified.
+ }  
+}  
