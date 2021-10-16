@@ -1,40 +1,47 @@
-//https://practice.geeksforgeeks.org/problems/reverse-a-linked-list/1#
+//https://leetcode.com/problems/reverse-linked-list/submissions/
+//https://www.geeksforgeeks.org/reverse-a-linked-list/
 
-class Solution
-{
-    public:
-    //Function to reverse a linked list.
-    struct Node* reverseList(struct Node *head)
-    {
-        // code here
-        // return head of reversed list
-        if(head->next==NULL)
+//Iterative Method
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        if(!head)
+            return head;
+        ListNode* p = NULL;
+        ListNode* f = head->next;
+        while(f){
+            head->next=p;
+            p=head;
+            head=f;
+            f=f->next;
+        }
+        head->next=p;
         return head;
-        
-        if(head->next->next==NULL)
-        {
-            Node *sec=head->next;
-            Node *f=head;
-            f->next=NULL;
-            sec->next=f;
-            return sec;
+    }
+};
+
+
+
+
+//RECURSIVE METHOD
+class Solution {
+public:
+    void solve(ListNode* head,ListNode* p,ListNode* &ans){
+        if(head->next==NULL){
+            head->next=p;
+            ans=head;
+            return;
         }
-        
-        Node *curr=head->next;
-        Node *f=curr->next;
-        Node *f1=curr->next;
-        Node *prev=head;
-        prev->next=NULL;
-        while(f)
-        {
-            curr->next=prev;
-            f1=f1->next;
-            f->next=curr;
-            prev=curr;
-            curr=f;
-            f=f1;
-        }
-        return curr;
+        solve(head->next,head,ans);
+        head->next=p;
     }
     
+    ListNode* reverseList(ListNode* head) {
+        if(!head)
+            return head;
+        ListNode* p = NULL;
+        ListNode* ans = head;
+        solve(head,p,ans);
+        return ans;
+    }
 };
