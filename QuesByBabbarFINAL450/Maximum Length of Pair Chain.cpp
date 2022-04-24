@@ -1,5 +1,26 @@
 //https://leetcode.com/problems/maximum-length-of-pair-chain/
 
+//O(NLogN)
+static bool fun(vector<int>&v1,vector<int>&v2){
+        if(v1[1]<v2[1])//Sorting by second coordinate
+            return true;
+        return false;
+    }
+    
+    int findLongestChain(vector<vector<int>>& pairs) {
+        int res = 0;
+        int l = INT_MIN;
+        sort(pairs.begin(),pairs.end(),fun);
+        for(int i=0;i<pairs.size();i++){
+            if(pairs[i][0]>l){
+                res++;
+                l = pairs[i][1];
+            }
+        }
+        return res;
+    }
+
+//O(N*N)
 static bool fun(vector<int>&v1,vector<int>&v2){
         if(v1[0]<v2[0])
             return true;
